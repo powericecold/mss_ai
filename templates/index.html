@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Tic-Tac-Toe</h1>
+    <div class="board">
+        {% for row in range(3) %}
+            <div class="row">
+                {% for col in range(3) %}
+                    {% set position = row * 3 + col %}
+                    <div class="cell" onclick="play({{ position }})">{{ board[position] }}</div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+    <div class="reset-container">
+        <button class="reset-button" onclick="reset()">Reset</button>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
